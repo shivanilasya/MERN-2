@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-5</title>
+    <style>
+        .error {
+            color: red;
+
+        }
+
+        .inputerror {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+        <form id="contactForm" onsubmit="return validateForm()">
+            <table style="margin-top: 50px; margin-left: 350px;">
+                <tr>
+                    <td>
+                        <label for="name">Name:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="name" name="name">
+                    </td>
+                    <td>
+                        <span id="nameError" class="error"></span><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="email">Email:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="email" name="email">
+                    </td>
+                    <td>
+                        <span id="emailError" class="error"></span><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="website">Website:</label>
+
+                    </td>
+                    <td>
+
+                        <input type="text" id="website" name="website">
+                    </td>
+                    <td>
+                        <span id="websiteError" class="error"></span><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="message">Message:</label>
+                    </td>
+                    <td>
+                        <textarea id="message" name="message"></textarea>
+                    </td>
+                    <td>
+                        <span id="messageError" class="error"></span><br>
+                    </td>
+                </tr>
+
+            </table>
+            <input type="submit" value="Submit" style="margin-left: 420px;">
+        </form>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const website = document.getElementById('website').value;
+            const message = document.getElementById('message').value;
+
+            document.getElementById('nameError').innerText = '';
+            document.getElementById('emailError').innerText = '';
+            document.getElementById('websiteError').innerText = '';
+            document.getElementById('messageError').innerText = '';
+
+            let isValid = true;
+
+            if (name === '') {
+                document.getElementById('nameError').innerText = 'This field is required';
+                document.getElementById('name').classList.add('inputerror');
+                isValid = false;
+
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.match(emailRegex)) {
+                document.getElementById('emailError').innerText = 'A valid email address is required';
+                document.getElementById('email').classList.add('inputerror');
+                isValid = false;
+            }
+
+            if (website === '') {
+                document.getElementById('websiteError').innerText = 'A valid URL is required';
+                document.getElementById('website').classList.add('inputerror');
+                isValid = false;
+            }
+
+            if (message === '') {
+                document.getElementById('messageError').innerText = 'This field is required';
+                document.getElementById('message').classList.add('inputerror');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+
+</html>

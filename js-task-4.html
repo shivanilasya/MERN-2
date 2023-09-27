@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="abc()">show date</button>
+    <p id="i1"></p>
+    <button onclick="def()">show Time</button>
+    <p id="i2"></p>
+    <script>
+        function abc(){
+            const date = new Date();
+            const day = date.getDate();
+            const monthNames = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            const month = monthNames[date.getMonth()];
+            const year = date.getFullYear();
+            const date1 = `${day}/${month}/${year}`;
+            document.getElementById("i1").innerHTML = date1;
+        }
+        function def(){
+            const time = new Date();
+            document.getElementById("i2").innerHTML = time;
+        }
+    </script>
+</body>
+</html>
